@@ -2,7 +2,7 @@ from createcsv import *
 from runMLmodel import *
 
 def main(directory):
-    rootdir = "./" + directory +"/"
+    rootdir = "./downloads/" + directory
     output= "./output.csv"
     parseFile(rootdir, output)
     data = getData()

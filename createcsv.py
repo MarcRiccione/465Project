@@ -129,27 +129,23 @@ def extract_features(pe):
 
 # Please change rootdir, output and class_label according to your setup
 
-def parseFile(rootdir, output):
+def parseFile(input_file, output):
     class_label=['clean']  # Change this accroding to sample [0] or [1] can also be used
 
     f = open(output, 'wt')
     writer = csv.writer(f)
     writer.writerow(IMAGE_DOS_HEADER+FILE_HEADER + OPTIONAL_HEADER + ['class'])
 
-
-    for file in os.listdir(rootdir):       
-        input_file = rootdir + file
-        if not file.startswith('.'):
-            try:
-                pe =  pefile.PE(input_file)            
-            except Exception as e:
-                print("Exception while loading file: ", e)        
-            else:
-                try:
-                    features = extract_features(pe)             
-                    writer.writerow(features+ class_label)
-                except Exception as e:
-                    print("Exception while opening and writing CSV file: ", e)
+    try:
+        pe =  pefile.PE(input_file)            
+    except Exception as e:
+        print("Exception while loading file: ", e)        
+    else:
+        try:
+            features = extract_features(pe)             
+            writer.writerow(features+ class_label)
+        except Exception as e:
+            print("Exception while opening and writing CSV file: ", e)
                 
     f.close()
             
