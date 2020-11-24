@@ -6,7 +6,7 @@ def main(directory):
     output= "./output.csv"
     parseFile(rootdir, output)
     data = getData()
-    print(data)
+    #print(data)
     res = runMLAlg(data)
     print(res)
 
