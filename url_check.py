@@ -43,12 +43,12 @@ while flag:
         if len(links) > 10:
             break
 """
-def getUrl():
-    counter = 0
-    url = 'http://localhost:3000/HW4.exe'
+def getUrl(url):
+    #counter = 0
+    #url = 'http://localhost:3000/HW4.exe'
     r = requests.get(url, allow_redirects=True)
-    open('./downloads2/input' + str(counter) + '.exe', 'wb').write(r.content)
-    counter += 1
+    open('./downloads2/input.exe', 'wb').write(r.content)
+    #counter += 1
 """
 for url in links:
     print(url)

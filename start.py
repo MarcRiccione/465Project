@@ -1,15 +1,24 @@
-from flask import Flask
+from flask import Flask, render_template, session, request, jsonify, Response, flash, redirect, url_for
 import requests
-#form bs4 import BeautifulSoup, SoupStrainer
 import re
 import time
+from main import *
 app = Flask(__name__)
 
 
 @app.route('/')
-def start():
+def my_form():
+    return render_template('index.html')
 
-    return "Hello World!"
+
+@app.route('/', methods=['POST'])
+def my_form_post():
+    text = request.form['text']
+    #print(text)
+    result = main(text)
+    return render_template('result.html', result = result)
+
+
 
 if __name__ == '__main__':
     app.run()
