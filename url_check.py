@@ -3,12 +3,11 @@ from bs4 import BeautifulSoup
 import re
 import time
 from urllib.request import Request, urlopen
-
-source_code = requests.get('https://stackoverflow.com/')
+"""
+source_code = requests.get('http://localhost:3000/')
 soup = BeautifulSoup(source_code.content, 'lxml')
 data = []
 links = []
-half_url = u'/servlet/av/jd?ai=782&ji=2624743&sn=I'
 
 def remove_duplicates(l): # remove duplicates and unURL string
     for item in l:
@@ -23,8 +22,10 @@ flag = True
 remove_duplicates(data)
 while flag:
     try:
+        print('here')
         for link in links:
             for j in soup.find_all('a', href=True):
+                
                 temp = []
                 source_code = requests.get(link)
                 soup = BeautifulSoup(source_code.content, 'lxml')
@@ -41,10 +42,24 @@ while flag:
         print(e)
         if len(links) > 10:
             break
-
+"""
+def getUrl():
+    counter = 0
+    url = 'http://localhost:3000/HW4.exe'
+    r = requests.get(url, allow_redirects=True)
+    open('./downloads2/input' + str(counter) + '.exe', 'wb').write(r.content)
+    counter += 1
+"""
 for url in links:
     print(url)
     #req = Request(url + half_url.encode('utf-8'), headers={'User-Agent': 'Mozilla/5.0'})
-    r = Request(url)
+    #r = Request('http://localhost:3000/test.txt')
     #webpage = urllib.request.retrieve(url)
-    response = urlopen(r)
+    #response = urlopen(r)
+
+    url = 'http://localhost:3000/HW4.exe'
+    r = requests.get(url, allow_redirects=True)
+    open('./downloads2/textD' + str(counter) + '.txt', 'wb').write(r.content)
+    counter += 1
+"""
+
