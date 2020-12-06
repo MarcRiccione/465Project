@@ -3,6 +3,7 @@ import requests
 import re
 import time
 from main import *
+
 app = Flask(__name__)
 
 
@@ -16,10 +17,14 @@ def my_form_post():
     text = request.form['text']
     #print(text)
     result = main(text)
-    return render_template('result.html', result = result)
+    return render_template('result.html', result = result, text = text)
 
 
+@app.route('/information')
+def information():
+    return render_template('information.html')
 
+    
 if __name__ == '__main__':
     app.run()
 

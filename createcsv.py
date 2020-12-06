@@ -139,15 +139,18 @@ def parseFile(input_file, output):
     try:
         pe =  pefile.PE(input_file)            
     except Exception as e:
-        print("Exception while loading file: ", e)        
+        print("Exception while loading file: ", e) 
+        return 1       
     else:
         try:
             features = extract_features(pe)             
             writer.writerow(features+ class_label)
         except Exception as e:
             print("Exception while opening and writing CSV file: ", e)
+            return 1
                 
     f.close()
+    return 0
             
            
 
