@@ -1,20 +1,3 @@
-#!/usr/bin/python
-#raw featrues extraction (total 55) for ClaMP
-
-#Written by: Ajit kumar, urwithajit9@gmail.com ,25Feb2015
-#Thanx to Ero Carrera for creating pefile. https://github.com/erocarrera/pefile
-
-#No license required for any kind of reuse
-#If using this script for your work, please refer this on your willingness
-
-#input: Directory path of samples
-	#File path of output (csv)
-	# Class label 0,1 (clean,malware)
-
-#output: csv with all extracted features
-# Note: please change so
-        
-#import required python modules
 import os
 import pefile
 import csv
@@ -126,11 +109,8 @@ def extract_features(pe):
                 pe.OPTIONAL_HEADER.NumberOfRvaAndSizes]   
     return IMAGE_DOS_HEADER_data + FILE_HEADER_data + OPTIONAL_HEADER_data
 
-
-# Please change rootdir, output and class_label according to your setup
-
 def parseFile(input_file, output):
-    class_label=['clean']  # Change this accroding to sample [0] or [1] can also be used
+    class_label=['clean']
 
     f = open(output, 'wt')
     writer = csv.writer(f)
