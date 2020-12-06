@@ -16,3 +16,4 @@ Then Start the App to Test With Executables!
 "yarn start"
 Go to http://localhost:3000
 You can right click on any of the links and click "copy link address" then test it in the machine learning application.
+Both test app and python web app should be run in separate terminals simultaneously
